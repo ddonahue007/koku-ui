@@ -65,7 +65,7 @@ export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, 
       <SimpleInput
         style={style}
         id="description"
-        label="description"
+        label={intl.formatMessage(messages.Description)}
         value={description}
         validated={errors.description ? 'error' : 'default'}
         helperTextInvalid={errors.description}
@@ -77,12 +77,12 @@ export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, 
             isRequired
             style={style}
             id="metric"
-            label="cost_models.add_rate_form.metric_select"
+            label={intl.formatMessage(messages.Metric)}
             value={metric}
             onChange={setMetric}
             options={[
               {
-                label: 'cost_models.add_rate_form.default_option',
+                label: `${intl.formatMessage(messages.CostModelsDefaultOption)}`,
                 value: '',
                 isDisabled: true,
               },
@@ -104,12 +104,12 @@ export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, 
               isInvalid={errors.measurement && measurementDirty}
               style={style}
               id="measurement"
-              label="cost_models.add_rate_form.measurement_select"
+              label={intl.formatMessage(messages.Measurement)}
               value={measurement}
               onChange={setMeasurement}
               options={[
                 {
-                  label: 'cost_models.add_rate_form.default_option',
+                  label: `${intl.formatMessage(messages.CostModelsDefaultOption)}`,
                   value: '',
                   isDisabled: true,
                 },
@@ -151,7 +151,7 @@ export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, 
             </FormGroup>
             {metric !== 'Cluster' ? (
               <Switch
-                aria-label="Enter rate by tag"
+                aria-label={intl.formatMessage(messages.CostModelsEnterRateByTag)}
                 label={intl.formatMessage(messages.CostModelsEnterRateByTag)}
                 isChecked={rateKind === 'tagging'}
                 onChange={toggleTaggingRate}
