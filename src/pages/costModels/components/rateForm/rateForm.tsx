@@ -6,7 +6,6 @@ import { RateInputBase } from 'pages/costModels/components/inputs/rateInput';
 import { Selector } from 'pages/costModels/components/inputs/selector';
 import { SimpleInput } from 'pages/costModels/components/inputs/simpleInput';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useIntl } from 'react-intl';
 
 import { TaggingRatesForm } from './taggingRatesForm';
@@ -18,7 +17,6 @@ interface RateFormProps {
 }
 
 export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, rateFormData }) => {
-  const { t } = useTranslation();
   const intl = useIntl();
   const {
     step,
@@ -130,18 +128,23 @@ export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, 
       {step === 'set_rate' ? (
         <>
           <>
-            <FormGroup isInline style={style} fieldId="calculation" label={t('cost_models.calculation_type')}>
+            <FormGroup
+              isInline
+              style={style}
+              fieldId="calculation"
+              label={intl.formatMessage(messages.CalculationType)}
+            >
               <Radio
                 name="calculation"
                 id="calculation_infra"
-                label={t('cost_models.add_rate_form.infrastructure')}
+                label={intl.formatMessage(messages.Infrastructure)}
                 isChecked={calculation === 'Infrastructure'}
                 onChange={() => setCalculation('Infrastructure')}
               />
               <Radio
                 name="calculation"
                 id="calculation_suppl"
-                label={t('cost_models.add_rate_form.supplementary')}
+                label={intl.formatMessage(messages.Supplementary)}
                 isChecked={calculation === 'Supplementary'}
                 onChange={() => setCalculation('Supplementary')}
               />
@@ -149,7 +152,7 @@ export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, 
             {metric !== 'Cluster' ? (
               <Switch
                 aria-label="Enter rate by tag"
-                label={t('cost_models.add_rate_form.rate_switch')}
+                label={intl.formatMessage(messages.CostModelsEnterRateByTag)}
                 isChecked={rateKind === 'tagging'}
                 onChange={toggleTaggingRate}
               />
@@ -172,8 +175,8 @@ export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, 
                 value={tagKey}
                 onChange={setTagKey}
                 id="tag-key"
-                label={t('cost_models.add_rate_form.tag_key')}
-                placeholder={t('cost_models.add_rate_form.enter_a_tag_key')}
+                label={intl.formatMessage(messages.CostModelsFilterBTagKey)}
+                placeholder={intl.formatMessage(messages.CostModelsEnterTagKey)}
                 validated={errors.tagKey && isTagKeyDirty ? 'error' : 'default'}
                 helperTextInvalid={errors.tagKey}
               />

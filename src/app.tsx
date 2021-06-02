@@ -67,7 +67,11 @@ export class App extends React.Component<AppProps, AppState> {
     const { maintenanceMode } = this.state;
     const route = maintenanceMode ? <Maintenance /> : <Routes />;
 
-    return <I18nProvider locale={this.state.locale}>{route}</I18nProvider>;
+    return (
+      <IntlProvider locale="en">
+        <I18nProvider locale={this.state.locale}>{route}</I18nProvider>
+      </IntlProvider>
+    );
   }
 }
 
@@ -81,4 +85,4 @@ const mapDispatchToProps: AppDispatchProps = { history };
 export default compose(
   withRouter,
   connect(mapStateToProps, mapDispatchToProps)
-)(<IntlProvider locale="en">App</IntlProvider>);
+)(App);
