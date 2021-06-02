@@ -1,11 +1,13 @@
 import { Button, ButtonVariant, FormGroup, Grid, GridItem, Radio, Switch } from '@patternfly/react-core';
 import { PlusCircleIcon } from '@patternfly/react-icons/dist/js/icons/plus-circle-icon';
 import { MetricHash } from 'api/metrics';
+import messages from 'locales/messages';
 import { RateInputBase } from 'pages/costModels/components/inputs/rateInput';
 import { Selector } from 'pages/costModels/components/inputs/selector';
 import { SimpleInput } from 'pages/costModels/components/inputs/simpleInput';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useIntl } from 'react-intl';
 
 import { TaggingRatesForm } from './taggingRatesForm';
 import { UseRateData } from './useRateForm';
@@ -17,6 +19,7 @@ interface RateFormProps {
 
 export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, rateFormData }) => {
   const { t } = useTranslation();
+  const intl = useIntl();
   const {
     step,
     description,
@@ -187,7 +190,7 @@ export const RateForm: React.FunctionComponent<RateFormProps> = ({ metricsHash, 
                 removeTag={removeTag}
               />
               <Button data-testid="add_more" style={addStyle} variant={ButtonVariant.link} onClick={addTag}>
-                <PlusCircleIcon /> {t('cost_models.add_rate_form.add_more_tag_values')}
+                <PlusCircleIcon /> {intl.formatMessage(messages.CostModelsAddMoreTagValues)}
               </Button>
             </>
           )}

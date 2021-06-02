@@ -1,6 +1,7 @@
 import { I18nProvider } from 'components/i18n';
 import Maintenance from 'pages/state/maintenance';
 import React from 'react';
+import { IntlProvider } from 'react-intl';
 import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
@@ -77,4 +78,7 @@ const mapStateToProps = createMapStateToProps<AppOwnProps, AppStateProps>((state
 
 const mapDispatchToProps: AppDispatchProps = { history };
 
-export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App);
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+)(<IntlProvider locale="en">App</IntlProvider>);
