@@ -82,6 +82,11 @@ export default defineMessages({
     description: 'Default',
     defaultMessage: 'Default',
   },
+  Description: {
+    id: 'Description',
+    description: 'Description',
+    defaultMessage: 'Description',
+  },
   Infrastructure: {
     id: 'Infrastructure',
     description: 'Infrastructure',

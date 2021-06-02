@@ -82,7 +82,4 @@ const mapStateToProps = createMapStateToProps<AppOwnProps, AppStateProps>((state
 
 const mapDispatchToProps: AppDispatchProps = { history };
 
-export default compose(
-  withRouter,
-  connect(mapStateToProps, mapDispatchToProps)
-)(App);
+export default compose(withRouter, connect(mapStateToProps, mapDispatchToProps))(App);
