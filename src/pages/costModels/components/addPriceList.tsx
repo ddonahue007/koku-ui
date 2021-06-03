@@ -19,7 +19,8 @@ import {
 } from 'pages/costModels/components/rateForm';
 import { CostModelContext } from 'pages/costModels/createCostModelWizard/context';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useIntl } from 'react-intl';
+import messages from 'locales/messages';
 
 interface AddPriceListProps {
   metricsHash: MetricHash;
@@ -29,19 +30,19 @@ interface AddPriceListProps {
 
 const AddPriceList: React.FunctionComponent<AddPriceListProps> = ({ submitRate, cancel, metricsHash }) => {
   const { tiers } = React.useContext(CostModelContext);
-  const { t } = useTranslation();
+  const intl = useIntl();
   const rateFormData = useRateData(metricsHash, undefined, tiers);
   const canSubmit = React.useMemo(() => isReadyForSubmit(rateFormData), [rateFormData.errors, rateFormData.rateKind]);
   return (
     <Stack hasGutter>
       <StackItem>
         <Title headingLevel="h2" size="xl">
-          {t('cost_models_wizard.price_list.title')}
+          {intl.formatMessage(messages.CostModelsCreateAPriceList)}
         </Title>
       </StackItem>
       <StackItem>
         <TextContent>
-          <Text component={TextVariants.h6}>{t('cost_models_wizard.price_list.sub_title_add')}</Text>
+          <Text component={TextVariants.h6}>{intl.formatMessage(messages.CostModelsSubTitleAdd)}</Text>
         </TextContent>
       </StackItem>
       <StackItem>
@@ -52,10 +53,10 @@ const AddPriceList: React.FunctionComponent<AddPriceListProps> = ({ submitRate, 
       <StackItem>
         <ActionGroup>
           <Button variant={ButtonVariant.primary} isDisabled={!canSubmit} onClick={() => submitRate(rateFormData)}>
-            {t('cost_models_wizard.price_list.create_rate')}
+            {intl.formatMessage(messages.CostModelsCreateRate)}
           </Button>
           <Button variant={ButtonVariant.link} onClick={cancel}>
-            {t('cost_models_wizard.price_list.cancel')}
+            {intl.formatMessage(messages.Cancel)}
           </Button>
         </ActionGroup>
       </StackItem>

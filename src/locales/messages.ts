@@ -7,10 +7,25 @@ export default defineMessages({
     description: 'Calculation type',
     defaultMessage: 'Calculation type',
   },
+  Cancel: {
+    id: 'Cancel',
+    description: 'Cancel',
+    defaultMessage: 'Cancel',
+  },
   CostModelsAddMoreTagValues: {
     id: 'CostModelsAddMoreTagValues',
     description: 'Add more tag values',
     defaultMessage: 'Add more tag values',
+  },
+  CostModelsCreateAPriceList: {
+    id: 'CostModelsCreateAPriceList',
+    description: 'Create a price list',
+    defaultMessage: 'Create a price list',
+  },
+  CostModelsCreateRate: {
+    id: 'CostModelsCreateRate',
+    description: 'Create rate',
+    defaultMessage: 'Create rate',
   },
   CostModelsDefaultOption: {
     id: 'CostModelsDefaultOption',
@@ -27,11 +42,6 @@ export default defineMessages({
     description: 'Should not exceed 500 characters',
     defaultMessage: 'Should not exceed 500 characters',
   },
-  CostModelsInfraCostSwitch: {
-    id: 'CostModelsInfraCostSwitch',
-    description: 'Use this rate to calculate infrastructure cost',
-    defaultMessage: 'Use this rate to calculate infrastructure cost',
-  },
   CostModelsEnterTagKey: {
     id: 'CostModelsEnterTagKey',
     description: 'Enter a tag key',
@@ -42,20 +52,20 @@ export default defineMessages({
     description: 'Enter a tag value',
     defaultMessage: 'Enter a tag value',
   },
-  CostModelsRateErrorMessagee: {
-    id: 'CostModelsRateErrorMessagee',
-    description: 'Rate should be a positive number',
-    defaultMessage: 'Rate should be a positive number',
-  },
   CostModelsEnterRateByTag: {
     id: 'CostModelsEnterRateByTag',
     description: 'Enter rate by tag',
     defaultMessage: 'Enter rate by tag',
   },
-  CostModelsFilterBTagKey: {
-    id: 'CostModelsFilterBTagKey',
+  CostModelsFilterByTagKey: {
+    id: 'CostModelsFilterByTagKey',
     description: 'Filter by tag key',
     defaultMessage: 'Filter by tag key',
+  },
+  CostModelsInfraCostSwitch: {
+    id: 'CostModelsInfraCostSwitch',
+    description: 'Use this rate to calculate infrastructure cost',
+    defaultMessage: 'Use this rate to calculate infrastructure cost',
   },
   CostModelsRateMustBeANumber: {
     id: 'CostModelsRateMustBeANumber',
@@ -66,6 +76,13 @@ export default defineMessages({
     id: 'CostModelsRateMustBeAPositiveNumber',
     description: 'Rate must be a positive number',
     defaultMessage: 'Rate must be a positive number',
+  },
+  CostModelsSubTitleAdd: {
+    id: 'CostModelsSubTitleAdd',
+    description:
+      'Select the metric you want to assign a price to, and specify a measurement unit and rate. You can optionally set multiple rates for particular tags.',
+    defaultMessage:
+      'Select the metric you want to assign a price to, and specify a measurement unit and rate. You can optionally set multiple rates for particular tags.',
   },
   CostModelsTagTooLong: {
     id: 'CostModelsTagTooLong',
