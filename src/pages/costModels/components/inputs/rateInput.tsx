@@ -7,8 +7,9 @@ import {
   TextInputProps,
 } from '@patternfly/react-core';
 import { DollarSignIcon } from '@patternfly/react-icons/dist/js/icons/dollar-sign-icon';
+import messages from 'locales/messages';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useIntl } from 'react-intl';
 
 type RateFormGroup = Pick<FormGroupProps, 'fieldId' | 'style'>;
 interface UniqueProps {
@@ -20,17 +21,17 @@ type RateInputBaseProps = RateFormGroup & RateTextInput & UniqueProps;
 
 export const RateInputBase: React.FunctionComponent<RateInputBaseProps> = ({
   fieldId,
-  label = 'cost_models.rate',
-  helperTextInvalid = 'cost_models.add_rate_form.error_message',
+  label = messages.Rate.defaultMessage,
+  helperTextInvalid = messages.CostModelsRateMustBeAPositiveNumber.defaultMessage,
   style,
   validated,
   value,
   onChange,
   onBlur,
 }) => {
-  const { t } = useTranslation();
-  const invalidTextI18n = t(helperTextInvalid);
-  const labelI18n = t(label);
+  const intl = useIntl();
+  const invalidTextI18n = intl.formatMessage(messages.CustomMessage, { msg: helperTextInvalid });
+  const labelI18n = intl.formatMessage(messages.CustomMessage, { msg: label });
   return (
     <FormGroup
       isRequired

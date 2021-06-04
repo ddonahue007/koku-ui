@@ -94,6 +94,11 @@ export default defineMessages({
     description: 'price {units}',
     defaultMessage: 'price {units}',
   },
+  CustomMessage: {
+    id: 'CustomMessage',
+    description: 'pass in a message',
+    defaultMessage: '{msg}',
+  },
   Default: {
     id: 'Default',
     description: 'Default',
