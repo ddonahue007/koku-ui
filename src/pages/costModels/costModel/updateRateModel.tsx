@@ -3,6 +3,7 @@ import { CostModel, CostModelRequest } from 'api/costModels';
 import { MetricHash } from 'api/metrics';
 import { Rate } from 'api/rates';
 import { Form } from 'components/forms/form';
+import messages from 'locales/messages';
 import {
   canSubmit as isReadyForSubmit,
   genFormDataFromRate,
@@ -13,7 +14,7 @@ import {
   useRateData,
 } from 'pages/costModels/components/rateForm';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { RootState } from 'store';
 import { costModelsActions, costModelsSelectors } from 'store/costModels';
@@ -40,7 +41,7 @@ const UpdateRateModalBase: React.FunctionComponent<UpdateRateModalBaseProps> = (
   updateError,
   onProceed,
 }) => {
-  const { t } = useTranslation();
+  const intl = useIntl();
   const rateFormData = useRateData(metricsHash, rate, otherRates);
   const canSubmit = React.useMemo(() => isReadyForSubmit(rateFormData), [rateFormData]);
   const gotDiffs = React.useMemo(() => hasDiff(rate, rateFormData), [rateFormData]);
@@ -62,7 +63,7 @@ const UpdateRateModalBase: React.FunctionComponent<UpdateRateModalBaseProps> = (
   }, [isOpen]);
   return (
     <Modal
-      title={t('cost_models_details.edit_rate')}
+      title={intl.formatMessage(messages.EditRate)}
       isOpen={isOpen}
       onClose={onClose}
       variant="large"
@@ -75,10 +76,10 @@ const UpdateRateModalBase: React.FunctionComponent<UpdateRateModalBaseProps> = (
           }}
           isDisabled={!canSubmit || isProcessing || !gotDiffs}
         >
-          {t('cost_models_details.add_rate_modal.save')}
+          {intl.formatMessage(messages.Save)}
         </Button>,
         <Button key="cancel" variant="link" onClick={onClose} isDisabled={isProcessing}>
-          {t('cost_models_details.add_rate_modal.cancel')}
+          {intl.formatMessage(messages.Cancel)}
         </Button>,
       ]}
     >

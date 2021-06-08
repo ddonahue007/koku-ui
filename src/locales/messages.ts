@@ -17,6 +17,11 @@ export default defineMessages({
     description: 'Add more tag values',
     defaultMessage: 'Add more tag values',
   },
+  CostModelsAddRate: {
+    id: 'CostModelsCreateRateCostModelsAddRate',
+    description: 'Add rate',
+    defaultMessage: 'Add rate',
+  },
   CostModelsCreateAPriceList: {
     id: 'CostModelsCreateAPriceList',
     description: 'Create a price list',
@@ -77,6 +82,33 @@ export default defineMessages({
     description: 'Rate must be a positive number',
     defaultMessage: 'Rate must be a positive number',
   },
+  CostModelsSourceTitle: {
+    id: 'CostModelsSourceTitle',
+    description: 'Assign sources to the cost model (optional)',
+    defaultMessage: 'Assign sources to the cost model (optional)',
+  },
+  CostModelsRefreshAction: {
+    id: 'CostModelsStepAction',
+    description: 'Refresh this step',
+    defaultMessage: 'Refresh this {name}}',
+  },
+  CostModelsUnavailable: {
+    id: 'CostModelsUnavailable',
+    description: 'short error message for unavailable [step|action|etc...]',
+    defaultMessage: 'This {name} is temporarily unavailable',
+  },
+  CostModelsStepUnavailableDesc: {
+    id: 'CostModelsStepUnavailableDesc',
+    description: 'detailed error message for unavailable step',
+    defaultMessage:
+      'Try refreshing this step or you can skip this step (as it is optional) and assign the source to the cost model at a later time. If the problem persists, contact your organization administrator or visit our {status_page_link} for known outages.',
+  },
+  CostModelsSourceUnavailableDesc: {
+    id: 'CostModelsStepUnavailableDesc',
+    description: 'detailed error message for unavailable step',
+    defaultMessage:
+      'You cannot assign a source at this time. Try refreshing this page. If the problem persists, contact your organization administrator or visit our {status_page_link} for known outages.',
+  },
   CostModelsSubTitleAdd: {
     id: 'CostModelsSubTitleAdd',
     description:
@@ -108,6 +140,11 @@ export default defineMessages({
     id: 'Description',
     description: 'Description',
     defaultMessage: 'Description',
+  },
+  EditRate: {
+    id: 'EditRate',
+    description: 'Edit rate',
+    defaultMessage: 'Edit rate',
   },
   Infrastructure: {
     id: 'Infrastructure',
@@ -159,10 +196,20 @@ export default defineMessages({
     description: 'This field is required',
     defaultMessage: 'This field is required',
   },
+  Save: {
+    id: 'Save',
+    description: 'Save',
+    defaultMessage: 'Save',
+  },
   SaveRate: {
     id: 'SaveRate',
     description: 'Save rate',
     defaultMessage: 'Save rate',
+  },
+  StatusUrl: {
+    id: 'StatusUrl',
+    description: 'Service status URL',
+    defaultMessage: '<a href=status.redhat.com>Status Page</a>',
   },
   Supplementary: {
     id: 'Supplementary',

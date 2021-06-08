@@ -11,6 +11,7 @@ import {
   Title,
 } from '@patternfly/react-core';
 import { MetricHash } from 'api/metrics';
+import messages from 'locales/messages';
 import {
   canSubmit as isReadyForSubmit,
   RateForm,
@@ -20,7 +21,6 @@ import {
 import { CostModelContext } from 'pages/costModels/createCostModelWizard/context';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import messages from 'locales/messages';
 
 interface AddPriceListProps {
   metricsHash: MetricHash;

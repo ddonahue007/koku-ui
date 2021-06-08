@@ -2,6 +2,7 @@ import { Alert, Button, ButtonVariant, Form, Modal } from '@patternfly/react-cor
 import { CostModelRequest } from 'api/costModels';
 import { MetricHash } from 'api/metrics';
 import { Rate } from 'api/rates';
+import messages from 'locales/messages';
 import {
   canSubmit as isReadyForSubmit,
   mergeToRequest,
@@ -11,7 +12,7 @@ import {
 } from 'pages/costModels/components/rateForm';
 import { initialRateFormData } from 'pages/costModels/components/rateForm/utils';
 import React from 'react';
-import { Translation } from 'react-i18next';
+import { useIntl } from 'react-intl';
 import { connect } from 'react-redux';
 import { RootState } from 'store';
 import { costModelsActions, costModelsSelectors } from 'store/costModels';
@@ -36,44 +37,39 @@ export const AddRateModalBase: React.FunctionComponent<AddRateModalBaseProps> = 
   metricsHash,
   rates,
 }) => {
+  const intl = useIntl();
   const rateFormData = useRateData(metricsHash);
   const canSubmit = React.useMemo(() => isReadyForSubmit(rateFormData), [rateFormData.errors, rateFormData.rateKind]);
   React.useEffect(() => {
     rateFormData.reset({ ...initialRateFormData, otherTiers: rates });
   }, [isOpen]);
   return (
-    <Translation>
-      {t => {
-        return (
-          <Modal
-            title={t('cost_models_details.add_rate_modal.title')}
-            isOpen={isOpen}
-            onClose={onClose}
-            variant="large"
-            actions={[
-              <Button
-                key="add-rate"
-                variant={ButtonVariant.primary}
-                isDisabled={!canSubmit || isProcessing}
-                onClick={() => {
-                  onProceed(rateFormData);
-                }}
-              >
-                {t('cost_models_details.add_rate')}
-              </Button>,
-              <Button key="cancel" variant={ButtonVariant.link} isDisabled={isProcessing} onClick={onClose}>
-                {t('cost_models_details.add_rate_modal.cancel')}
-              </Button>,
-            ]}
-          >
-            <Form>
-              {updateError && <Alert variant="danger" title={`${updateError}`} />}
-              <RateForm metricsHash={metricsHash} rateFormData={rateFormData} />
-            </Form>
-          </Modal>
-        );
-      }}
-    </Translation>
+    <Modal
+      title={intl.formatMessage(messages.CostModelsAddRate)}
+      isOpen={isOpen}
+      onClose={onClose}
+      variant="large"
+      actions={[
+        <Button
+          key="add-rate"
+          variant={ButtonVariant.primary}
+          isDisabled={!canSubmit || isProcessing}
+          onClick={() => {
+            onProceed(rateFormData);
+          }}
+        >
+          {intl.formatMessage(messages.CostModelsAddRate)}
+        </Button>,
+        <Button key="cancel" variant={ButtonVariant.link} isDisabled={isProcessing} onClick={onClose}>
+          {intl.formatMessage(messages.Cancel)}
+        </Button>,
+      ]}
+    >
+      <Form>
+        {updateError && <Alert variant="danger" title={`${updateError}`} />}
+        <RateForm metricsHash={metricsHash} rateFormData={rateFormData} />
+      </Form>
+    </Modal>
   );
 };
 
