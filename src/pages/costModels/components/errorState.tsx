@@ -51,7 +51,7 @@ export const SourceStepErrorState: React.FunctionComponent<SourcesErrorStateProp
   const intl = useIntl();
   const title = intl.formatMessage(messages.CostModelsUnavailable, { name: 'step' });
   const description = intl.formatMessage(messages.CostModelsStepUnavailableDesc, {
-    status_page_link: intl.formatMessage(messages.StatusUrl),
+    status_page_link: '<a href=status.redhat.com>Status Page</a>',
   });
   const actionButton = (
     <Button onClick={onRefresh}>{intl.formatMessage(messages.CostModelsRefreshAction, { name: 'step' })}</Button>
@@ -79,7 +79,7 @@ export const SourcesModalErrorStateBase: React.FunctionComponent<SourcesErrorSta
   const intl = useIntl();
   const title = intl.formatMessage(messages.CostModelsUnavailable, { name: 'action' });
   const description = intl.formatMessage(messages.CostModelsSourceUnavailableDesc, {
-    status_page_link: intl.formatMessage(messages.StatusUrl),
+    status_page_link: '<a href=status.redhat.com>Status Page</a>',
   });
   const actionButton = (
     <Button onClick={onRefresh}>{intl.formatMessage(messages.CostModelsRefreshAction, { name: 'dialog' })}</Button>

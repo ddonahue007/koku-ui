@@ -4,6 +4,7 @@ import Main from '@redhat-cloud-services/frontend-components/Main';
 import PageHeader, { PageHeaderTitle } from '@redhat-cloud-services/frontend-components/PageHeader';
 import { CostModel } from 'api/costModels';
 import { AxiosError } from 'axios';
+import messages from 'locales/messages';
 import MarkupCard from 'pages/costModels/costModel/markup';
 import PriceListTable from 'pages/costModels/costModel/priceListTable';
 import SourceTable from 'pages/costModels/costModel/sourceTable';
@@ -11,7 +12,8 @@ import { parseApiError } from 'pages/costModels/createCostModelWizard/parseError
 import Loading from 'pages/state/loading';
 import NotAvailable from 'pages/state/notAvailable';
 import React from 'react';
-import { Translation } from 'react-i18next';
+import { useIntl } from 'react-intl';
+// import { Translation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { createMapStateToProps, FetchStatus } from 'store/common';
@@ -65,12 +67,13 @@ class CostModelInformation extends React.Component<Props, State> {
       costModelError,
       metricsError,
     } = this.props;
+    const intl = useIntl();
     if (
       metricsStatus !== FetchStatus.complete ||
       rbacStatus !== FetchStatus.complete ||
       costModelStatus !== FetchStatus.complete
     ) {
-      return <Translation>{t => <Loading title={t('cost_models_details.header.title')} />}</Translation>;
+      return <Loading title={intl.formatMessage(messages.CostModelsHeaderTitle)} />;
     }
     const fetchError = metricsError || rbacError || costModelError;
     if (fetchError) {
@@ -78,34 +81,26 @@ class CostModelInformation extends React.Component<Props, State> {
         const costModelErrMessage = parseApiError(costModelError);
         if (costModelErrMessage === 'detail: Invalid provider uuid') {
           return (
-            <Translation>
-              {t => {
-                return (
-                  <>
-                    <PageHeader>
-                      <PageHeaderTitle title={t('cost_models_details.header.title')} />
-                    </PageHeader>
-                    <Main>
-                      <EmptyState>
-                        <EmptyStateIcon icon={ErrorCircleOIcon} />
-                        <Title headingLevel="h2" size="lg">
-                          {t('cost_models_details.empty_state_bad_uuid.title')}
-                        </Title>
-                        <EmptyStateBody>
-                          {t('cost_models_details.empty_state_bad_uuid.description', {
-                            uuid: this.props.match.params.uuid,
-                          })}
-                        </EmptyStateBody>
-                      </EmptyState>
-                    </Main>
-                  </>
-                );
-              }}
-            </Translation>
+            <>
+              <PageHeader>
+                <PageHeaderTitle title={intl.formatMessage(messages.CostModelsHeaderTitle)} />
+              </PageHeader>
+              <Main>
+                <EmptyState>
+                  <EmptyStateIcon icon={ErrorCircleOIcon} />
+                  <Title headingLevel="h2" size="lg">
+                    {intl.formatMessage(messages.CostModelsNotFoundTitle)}
+                  </Title>
+                  <EmptyStateBody>
+                    {intl.formatMessage(messages.CostModelsNotFoundDesc, { uuid: this.props.match.params.uuid })}
+                  </EmptyStateBody>
+                </EmptyState>
+              </Main>
+            </>
           );
         }
       }
-      return <Translation>{t => <NotAvailable title={t('cost_models_details.header.title')} />}</Translation>;
+      return <NotAvailable title={intl.formatMessage(messages.CostModelsHeaderTitle)} />;
     }
     const current = costModels[0];
     const sources = current.sources;

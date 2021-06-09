@@ -12,6 +12,11 @@ export default defineMessages({
     description: 'Cancel',
     defaultMessage: 'Cancel',
   },
+  Close: {
+    id: 'Close',
+    description: 'Close',
+    defaultMessage: 'Close',
+  },
   CostModelsAddMoreTagValues: {
     id: 'CostModelsAddMoreTagValues',
     description: 'Add more tag values',
@@ -67,10 +72,25 @@ export default defineMessages({
     description: 'Filter by tag key',
     defaultMessage: 'Filter by tag key',
   },
+  CostModelsHeaderTitle: {
+    id: 'CostModelsHeaderTitle',
+    description: 'Cost models',
+    defaultMessage: 'Cost models',
+  },
   CostModelsInfraCostSwitch: {
     id: 'CostModelsInfraCostSwitch',
     description: 'Use this rate to calculate infrastructure cost',
     defaultMessage: 'Use this rate to calculate infrastructure cost',
+  },
+  CostModelsNotFoundTitle: {
+    id: 'CostModelsNotFound',
+    description: 'Cost model can not be found',
+    defaultMessage: 'Cost model can not be found',
+  },
+  CostModelsNotFoundDesc: {
+    id: 'CostModelsNotFoundDesc',
+    description: 'Cost model with uuid: {uuid} does not exist.',
+    defaultMessage: 'Cost model with uuid: {uuid} does not exist.',
   },
   CostModelsRateMustBeANumber: {
     id: 'CostModelsRateMustBeANumber',
@@ -90,7 +110,7 @@ export default defineMessages({
   CostModelsRefreshAction: {
     id: 'CostModelsStepAction',
     description: 'Refresh this step',
-    defaultMessage: 'Refresh this {name}}',
+    defaultMessage: 'Refresh this {name}',
   },
   CostModelsUnavailable: {
     id: 'CostModelsUnavailable',
@@ -206,10 +226,10 @@ export default defineMessages({
     description: 'Save rate',
     defaultMessage: 'Save rate',
   },
-  StatusUrl: {
-    id: 'StatusUrl',
-    description: 'Service status URL',
-    defaultMessage: '<a href=status.redhat.com>Status Page</a>',
+  StatusPage: {
+    id: 'StatusPage',
+    description: 'Status Page',
+    defaultMessage: 'Status Page',
   },
   Supplementary: {
     id: 'Supplementary',
