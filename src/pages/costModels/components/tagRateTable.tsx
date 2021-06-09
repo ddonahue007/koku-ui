@@ -1,9 +1,9 @@
 import { IRow, TableVariant } from '@patternfly/react-table';
 import { TagRates } from 'api/rates';
-import { TFunction } from 'i18next';
+import messages from 'locales/messages';
 import { TableTemplate } from 'pages/costModels/components/tableTemplate';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useIntl } from 'react-intl';
 import { formatCurrency } from 'utils/formatValue';
 
 interface TagRateTableProps {
@@ -11,18 +11,19 @@ interface TagRateTableProps {
 }
 
 const cells = [
-  'cost_models.table.tag_key',
-  'cost_models.tag_value',
-  'cost_models.rate',
-  'description',
-  'cost_models.default',
+  messages.TagKey.defaultMessage,
+  messages.TagValue.defaultMessage,
+  messages.Rate.defaultMessage,
+  messages.Description.defaultMessage,
+  messages.Default.defaultMessage,
 ];
 
-const translateRows = (t: TFunction, rows: IRow[]): IRow[] => {
+const translateRows = (rows: IRow[]): IRow[] => {
   return rows.map(row => {
     const rowCells = row.cells.map(cell => {
       if (typeof cell === 'string') {
-        return t(cell);
+        const intl = useIntl();
+        return intl.formatMessage(messages.CustomMessage, { msg: cell });
       }
       return cell;
     });
@@ -35,7 +36,6 @@ const translateRows = (t: TFunction, rows: IRow[]): IRow[] => {
 };
 
 const TagRateTable: React.FunctionComponent<TagRateTableProps> = ({ tagRates }) => {
-  const { t } = useTranslation();
   const rows = tagRates.tag_values.map((tagValue, ix) => {
     return {
       cells: [
@@ -47,7 +47,7 @@ const TagRateTable: React.FunctionComponent<TagRateTableProps> = ({ tagRates }) 
       ],
     };
   });
-  const translatedRows = translateRows(t, rows);
+  const translatedRows = translateRows(rows);
   return (
     <TableTemplate
       aria-label={`tag-table-rate-${tagRates.tag_key}`}

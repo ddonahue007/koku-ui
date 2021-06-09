@@ -13,7 +13,6 @@ import Loading from 'pages/state/loading';
 import NotAvailable from 'pages/state/notAvailable';
 import React from 'react';
 import { useIntl } from 'react-intl';
-// import { Translation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { createMapStateToProps, FetchStatus } from 'store/common';

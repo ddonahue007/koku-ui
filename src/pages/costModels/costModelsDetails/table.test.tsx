@@ -17,6 +17,7 @@ import { render } from '@testing-library/react';
 import { emptyPage, noMatchPageName, page1 } from 'api/costModels.data';
 import { createMemoryHistory } from 'history';
 import React from 'react';
+import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
 import { createStore } from 'redux';
@@ -32,7 +33,9 @@ const renderUI = (state: Partial<RootState>) => {
   return render(
     <Provider store={store}>
       <Router history={history}>
-        <CostModelsTable />
+        <IntlProvider locale="en">
+          <CostModelsTable />
+        </IntlProvider>
       </Router>
     </Provider>
   );
