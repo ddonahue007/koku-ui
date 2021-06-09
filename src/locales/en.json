@@ -738,9 +738,9 @@
   "no_providers_state": {
     "aws_desc": "Add an Amazon Web Services account to see a total cost breakdown of your spend by accounts, organizational units, services, regions, or tags.",
     "aws_title": "Track your Amazon Web Services spending!",
-    "azure_desc": "Add an Microsoft Azure account to see a total cost breakdown of your spend by accounts, services, regions, or tags.",
+    "azure_desc": "Add a Microsoft Azure account to see a total cost breakdown of your spend by accounts, services, regions, or tags.",
     "azure_title": "Track your Microsoft Azure spending!",
-    "gcp_desc": "Add an Google Cloud Platform account to see a total cost breakdown of your spend by accounts, services, regions, or tags.",
+    "gcp_desc": "Add a Google Cloud Platform account to see a total cost breakdown of your spend by accounts, services, regions, or tags.",
     "gcp_title": "Track your Google Cloud Platform spending!",
     "get_started": "Get started with Sources",
     "ibm_desc": "Add an IBM Cloud account to see a total cost breakdown of your spend by accounts, services, regions, or tags.",
@@ -781,6 +781,11 @@
     "supplementary_cost_desc": "All costs not directly attributed to the infrastructure. These costs are determined by applying a price list within a cost model to OpenShift cluster metrics.",
     "title": "OpenShift details"
   },
+  "ocp_infrastructure_dashboard": {
+    "cost_title": "OpenShift infrastructure cost",
+    "cost_trend_title": "OpenShift cumulative infrastructure cost comparison ({{units}})",
+    "daily_cost_trend_title": "OpenShift daily infrastructure cost comparison ({{units}})"
+  },
   "ocp_supplementary_dashboard": {
     "cost_title": "OpenShift supplementary cost",
     "cost_trend_title": "OpenShift cumulative supplementary cost comparison ({{units}})",
@@ -816,7 +821,6 @@
     "ocp_cloud_desc": "Infrastructure cost attributed to OpenShift Container Platform, based on a subset of cloud cost data.",
     "ocp_desc": "Total cost for OpenShift Container Platform, comprising the infrastructure cost and cost calculated from metrics.",
     "perspective": {
-      "all": "All",
       "aws": "Amazon Web Services",
       "aws_cloud": "Amazon Web Services filtered by OpenShift",
       "azure": "Microsoft Azure",
@@ -824,9 +828,11 @@
       "gcp": "Google Cloud Platform",
       "ibm": "IBM Cloud",
       "label": "Perspective",
+      "ocp_all": "All OpenShift",
       "ocp_cloud": "All cloud filtered by OpenShift",
-      "ocp_usage": "OpenShift usage",
-      "supplementary": "Supplementary"
+      "ocp_infrastructure": "OpenShift infrastructure",
+      "ocp_supplementary": "OpenShift supplementary",
+      "ocp_usage": "OpenShift usage"
     }
   },
   "page_cost_models": {
